@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Backup do Sistema Escolar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    button, input[type="file"] {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .export-btn {
+      background-color: #2ecc71;
+      color: white;
+    }
+    .import-btn {
+      background-color: #3498db;
+      color: white;
+    }
+    .file-input {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .message {
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Backup e Restauração</h1>
+
+  <button class="export-btn" onclick="exportarBackup()">Exportar Backup</button>
+
+  <div class="file-input">
+    <input type="file" id="arquivoBackup" accept=".json" />
+    <button class="import-btn" onclick="importarBackup()">Importar Backup</button>
+  </div>
+
+  <div id="mensagem" class="message"></div>
+
+  <script>
+    function exportarBackup() {
+      const dados = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const chave = localStorage.key(i);
+        dados[chave] = localStorage.getItem(chave);
+      }
+
+      const blob = new Blob([JSON.stringify(dados, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "backup_escolar.json";
+      a.click();
+      URL.revokeObjectURL(url);
+
+      document.getElementById("mensagem").textContent = "Backup exportado com sucesso!";
+    }
+
+    function importarBackup() {
+      const input = document.getElementById("arquivoBackup");
+      const file = input.files[0];
+
+      if (!file) {
+        alert("Selecione um arquivo de backup .json para importar.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const dadosImportados = JSON.parse(e.target.result);
+          for (const chave in dadosImportados) {
+            localStorage.setItem(chave, dadosImportados[chave]);
+          }
+          document.getElementById("mensagem").textContent = "Backup restaurado com sucesso!";
+        } catch (error) {
+          alert("Erro ao importar backup. Verifique se o arquivo está correto.");
+        }
+      };
+      reader.readAsText(file);
+    }
+  </script>
+
+</body>
+</html>

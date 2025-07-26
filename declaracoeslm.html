@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Declarações - Escola</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      max-width: 800px;
+    }
+    input[type="text"] {
+      width: 300px;
+      padding: 8px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 8px 15px;
+      font-size: 16px;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    #declaracao {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      white-space: pre-wrap;
+      background: #f9f9f9;
+      min-height: 150px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gerar Declaração de Aluno</h1>
+  <input type="text" id="inputNome" placeholder="Digite o nome do aluno" />
+  <button onclick="gerarDeclaracao()">Gerar Declaração</button>
+
+  <div id="declaracao"></div>
+  <br />
+  <button id="btnPDF" style="display:none" onclick="baixarPDF()">Baixar PDF</button>
+
+  <!-- jsPDF CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <script>
+    const { jsPDF } = window.jspdf;
+
+    function gerarDeclaracao() {
+      const nomeBusca = document.getElementById('inputNome').value.trim().toLowerCase();
+      if (!nomeBusca) {
+        alert('Por favor, digite o nome do aluno.');
+        return;
+      }
+
+      // Buscar aluno no localStorage
+      let alunoEncontrado = null;
+      for (let key in localStorage) {
+        if (localStorage.hasOwnProperty(key) && key.startsWith('aluno-')) {
+          const aluno = JSON.parse(localStorage.getItem(key));
+          if (aluno.nome.toLowerCase() === nomeBusca) {
+            alunoEncontrado = aluno;
+            break;
+          }
+        }
+      }
+
+      let textoDeclaracao = '';
+      if (alunoEncontrado) {
+        textoDeclaracao +=
+          `DECLARO PARA OS DEVIDOS FINS QUE REVENDO OS TERMOS DE NOSSOS ARQUIVOS, QUE DO(A) ALUNO(A) ${alunoEncontrado.nome.toUpperCase()} CONSTA:\n\n`;
+
+        textoDeclaracao +=
+          `Dados Pessoais:\n` +
+          `- Nome: ${alunoEncontrado.nome}\n` +
+          `- Data de Nascimento: ${alunoEncontrado.nascimento}\n` +
+          `- Nome da Mãe: ${alunoEncontrado.mae}\n` +
+          `- Nome do Pai: ${alunoEncontrado.pai}\n` +
+          `- Endereço: ${alunoEncontrado.endereco}\n` +
+          `- Série: ${alunoEncontrado.serie}\n\n`;
+
+        if (alunoEncontrado.historico && alunoEncontrado.historico.length > 0) {
+          textoDeclaracao += "Histórico Escolar:\n";
+          alunoEncontrado.historico.forEach((linha, i) => {
+            textoDeclaracao +=
+              `\nRegistro ${i + 1}:\n` +
+              `  Série: ${linha.serie}\n` +
+              `  Ano Letivo: ${linha.anoLetivo}\n` +
+              `  Escola: ${linha.escola}\n` +
+              `  Português: ${linha.portugues}\n` +
+              `  Matemática: ${linha.matematica}\n` +
+              `  Geografia: ${linha.geografia}\n` +
+              `  História: ${linha.historia}\n` +
+              `  Ciências: ${linha.ciencias}\n` +
+              `  Arte: ${linha.arte}\n` +
+              `  Educação Física: ${linha.educacaoFisica}\n` +
+              `  Religião: ${linha.religiao}\n` +
+              `  Carga Horária: ${linha.cargaHoraria}\n` +
+              `  Situação do Aluno: ${linha.situacao}\n`;
+          });
+        } else {
+          textoDeclaracao += "Não há registros no histórico escolar.\n";
+        }
+      } else {
+        textoDeclaracao =
+          `DECLARO QUE REVENDO OS TERMOS DESTA ESCOLA, DO ALUNO(A) "${document.getElementById('inputNome').value.toUpperCase()}" NADA CONSTA NOS NOSSOS ARQUIVOS DIGITAIS.`;
+      }
+
+      const dataAtual = new Date().toLocaleDateString('pt-BR');
+      textoDeclaracao += `\n\nLocal e Data: Cidade, ${dataAtual}\n\nAssinatura: ___________________________`;
+
+      // Mostrar declaração na tela
+      document.getElementById('declaracao').textContent = textoDeclaracao;
+      document.getElementById('btnPDF').style.display = 'inline-block';
+    }
+
+    function baixarPDF() {
+      const doc = new jsPDF();
+
+      const texto = document.getElementById('declaracao').textContent;
+      const linhas = doc.splitTextToSize(texto, 180); // largura da página
+
+      doc.setFontSize(12);
+      doc.text(linhas, 10, 20);
+      doc.save('declaracao_aluno.pdf');
+    }
+  </script>
+</body>
+</html>

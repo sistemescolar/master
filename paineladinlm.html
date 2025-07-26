@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu de Acesso ao Sistema</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .menu-container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      width: 320px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .menu-btn {
+      display: block;
+      background: #007BFF;
+      color: white;
+      width: 100%;
+      border: none;
+      padding: 15px 20px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .menu-btn:hover {
+      background: #0056b3;
+    }
+    .menu-btn:active {
+      background: #003d80;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-container">
+    <h1>Menu de Acesso</h1>
+    <button class="menu-btn" onclick="acessarPagina('ano_letivolm.html')">1 - Ano Letivo</button>
+    <button class="menu-btn" onclick="acessarPagina('cadalunolm.html')">2 - Cadastro de Alunos</button>
+    <button class="menu-btn" onclick="acessarPagina('declaracoeslm.html')">3 - Declarações</button>
+    <button class="menu-btn" onclick="acessarPagina('histescolarlm.html')">4 - Histórico Escolar</button>
+    <button class="menu-btn" onclick="acessarPagina('funcionarioslm.html')">5 - Funcionários</button>
+    <button class="menu-btn" onclick="acessarPagina('lfuncionarioslm.html')">6 - Lista de Funcionários</button>
+    <button class="menu-btn" onclick="acessarPagina('backuplm.html')">7 - RESTAURAR SISTEMA - </button>
+
+    <button class="menu-btn" onclick="sair()">8 - Sair</button>
+  </div>
+
+  <script>
+    function acessarPagina(pagina) {
+      // Redireciona para a página solicitada
+      window.location.href = pagina;
+    }
+
+    function sair() {
+      // Aqui você pode limpar o localStorage, cookies ou qualquer coisa relacionada ao login
+      alert('Saindo do sistema...');
+      // Simula logout redirecionando para uma página inicial ou de login
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
