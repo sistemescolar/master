@@ -156,6 +156,30 @@
     }
   }
 </script>
+<script>
+  // 🔧 EDITAR AQUI SE NECESSÁRIO
+  const usuarioCadastrado = "benedito";
+  const senhaCadastrada = "1234";
+  const paginaDestino = "https://sistemescolar.github.io/luizmachado/index.html"; // Pode ser qualquer página que você tiver
+
+  function fazerLogin() {
+    const usuario = document.getElementById("username").value.trim();
+    const senha = document.getElementById("password").value.trim();
+    const msg = document.getElementById("msg");
+
+ 
+    if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
+      msg.style.color = "green";
+      msg.textContent = "Login bem-sucedido!";
+      setTimeout(() => {
+        window.location.href = paginaDestino;
+      }, 1000);
+    } else {
+      msg.style.color = "red";
+      msg.textContent = "Usuário ou senha incorretos!";
+    }
+  }
+</script>
 
   <script>
     function acessarPagina(pagina) {
