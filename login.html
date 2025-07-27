@@ -5,39 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PAGINA DE ACESSO</title>
   <style>
-    .login-box {
-      background: #fff;
-      padding: 90px 100px;
-      border-radius: 20px;
-      box-shadow: 0 0 10px #ccc;
-      width: 80%;
-      align: center;
-    }
-    h2 {
-      text-align: center;
-    }
-    input, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background-color: green;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    .msg {
-      margin-top: 10px;
-      text-align: center;
-      color: red;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -51,7 +18,6 @@
       background-color: #f4f4f4;
     }
 
-    /* MENU LATERAL */
     .menu-lateral {
       width: 200px;
       background-color: #222;
@@ -81,289 +47,98 @@
       background-color: #444;
     }
 
-    /* CONTEÚDO PRINCIPAL */
-    .login {
-      flex-grow: 1;
-      padding: 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
+    .login-box {
+      background: #fff;
+      padding: 90px 100px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px #ccc;
+      width: 80%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    .botao {
-      padding: 30px;
-      font-size: 16px;
-      border: none;
-      border-radius: 10px;
+    h2 {
+      text-align: center;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: green;
       color: white;
+      border: none;
       cursor: pointer;
-      transition: transform 0.2s ease;
     }
 
-    .botao:hover {
-      transform: scale(1.05);
+    button:hover {
+      background-color: #0056b3;
     }
 
-    .vermelho { background-color: #e74c3c; }
-    .azul { background-color: #3498db; }
-    .verde { background-color: #2ecc71; }
-    .laranja { background-color: #e67e22; }
-    .roxo { background-color: #9b59b6; }
-    .amarelo { background-color: #f1c40f; color: #000; }
-    .cinza { background-color: #7f8c8d; }
-    .rosa { background-color: #fd79a8; }
+    .msg {
+      margin-top: 10px;
+      text-align: center;
+      color: red;
+    }
   </style>
 </head>
 <body>
 
   <div class="menu-lateral">
     <h2>Menu</h2>
-    <a href="index.html">home</a>
-    <a href="quemsomos.html">quem somos</a>
-    <a href="objetivos.html">objetivos</a>
-    <a href="metodologia.html">metodologia</a>
-    <a href="contatos.html">contatos</a>
+    <a href="index.html">Home</a>
+    <a href="quemsomos.html">Quem Somos</a>
+    <a href="objetivos.html">Objetivos</a>
+    <a href="metodologia.html">Metodologia</a>
+    <a href="contatos.html">Contatos</a>
   </div>
 
-<div class="login-box">
-  <h2>Login</h2>
-  <input type="text" id="username" placeholder="Usuário">
-  <input type="password" id="password" placeholder="Senha">
-  <button onclick="fazerLogin()">Entrar</button>
-  <div class="msg" id="msg"></div>
-</div>
-<script>
-  // 🔧 EDITAR AQUI SE NECESSÁRIO
-  const usuarioCadastrado = "benedito";
-  const senhaCadastrada = "155200";
-  const paginaDestino = "paineladmin.html"; 
-  
-  function fazerLogin() {
-    const usuario = document.getElementById("username").value.trim();
-    const senha = document.getElementById("password").value.trim();
-    const msg = document.getElementById("msg");
-
- 
-    if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
-      msg.style.color = "green";
-      msg.textContent = "Login bem-sucedido!";
-      setTimeout(() => {
-        window.location.href = paginaDestino;
-      }, 1000);
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "Usuário ou senha incorretos!";
-    }
-  }
-</script>
-<script>
-  // 🔧 EDITAR AQUI SE NECESSÁRIO
-  const usuarioCadastrado = "mendes";
-  const senhaCadastrada = "luiz2025";
-  const paginaDestino = "https://sistemescolar.github.io/luizmachado/index.html"; // Pode ser qualquer página que você tiver
-
-  function fazerLogin() {
-    const usuario = document.getElementById("username").value.trim();
-    const senha = document.getElementById("password").value.trim();
-    const msg = document.getElementById("msg");
-
- 
-    if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
-      msg.style.color = "green";
-      msg.textContent = "Login bem-sucedido!";
-      setTimeout(() => {
-        window.location.href = paginaDestino;
-      }, 1000);
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "Usuário ou senha incorretos!";
-    }
-  }
-</script>
-  
-<script>
-  // 🔧 EDITAR AQUI SE NECESSÁRIO
-  const usuarioCadastrado = "matilde";
-  const senhaCadastrada = "matilde2025";
-  const paginaDestino = "https://sistemescolar.github.io/auziramatilde/index.html"; // Pode ser qualquer página que você tiver
-
-  function fazerLogin() {
-    const usuario = document.getElementById("username").value.trim();
-    const senha = document.getElementById("password").value.trim();
-    const msg = document.getElementById("msg");
-
- 
-    if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
-      msg.style.color = "green";
-      msg.textContent = "Login bem-sucedido!";
-      setTimeout(() => {
-        window.location.href = paginaDestino;
-      }, 1000);
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "Usuário ou senha incorretos!";
-    }
-  }
-</script>
-<script>
-  // 🔧 EDITAR AQUI SE NECESSÁRIO
-  const usuarioCadastrado = "firmino";
-  const senhaCadastrada = "jose2025";
-  const paginaDestino = "https://sistemescolar.github.io/josefirmino/index.html"; // Pode ser qualquer página que você tiver
-
-  function fazerLogin() {
-    const usuario = document.getElementById("username").value.trim();
-    const senha = document.getElementById("password").value.trim();
-    const msg = document.getElementById("msg");
-
- 
-    if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
-      msg.style.color = "green";
-      msg.textContent = "Login bem-sucedido!";
-      setTimeout(() => {
-        window.location.href = paginaDestino;
-      }, 1000);
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "Usuário ou senha incorretos!";
-    }
-  }
-</script>
-<script>
-  // 🔧 EDITAR AQUI SE NECESSÁRIO
-  const usuarioCadastrado = "raimundo";
-  const senhaCadastrada = "raimundo2025";
-  const paginaDestino = "https://sistemescolar.github.io/raimundomauro/index.html"; // Pode ser qualquer página que você tiver
-
-  function fazerLogin() {
-    const usuario = document.getElementById("username").value.trim();
-    const senha = document.getElementById("password").value.trim();
-    const msg = document.getElementById("msg");
-
- 
-    if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
-      msg.style.color = "green";
-      msg.textContent = "Login bem-sucedido!";
-      setTimeout(() => {
-        window.location.href = paginaDestino;
-      }, 1000);
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "Usuário ou senha incorretos!";
-    }
-  }
-</script>
-<script>
-  // 🔧 EDITAR AQUI SE NECESSÁRIO
-  const usuarioCadastrado = "santaluzia";
-  const senhaCadastrada = "luzia2025";
-  const paginaDestino = "https://sistemescolar.github.io/santaluzia/index.html"; // Pode ser qualquer página que você tiver
-
-  function fazerLogin() {
-    const usuario = document.getElementById("username").value.trim();
-    const senha = document.getElementById("password").value.trim();
-    const msg = document.getElementById("msg");
-
- 
-    if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
-      msg.style.color = "green";
-      msg.textContent = "Login bem-sucedido!";
-      setTimeout(() => {
-        window.location.href = paginaDestino;
-      }, 1000);
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "Usuário ou senha incorretos!";
-    }
-  }
-</script>
-<script>
-  // 🔧 EDITAR AQUI SE NECESSÁRIO
-  const usuarioCadastrado = "izidorio";
-  const senhaCadastrada = "izidorio2025";
-  const paginaDestino = "https://sistemescolar.github.io/ceiizidorio/index.html"; // Pode ser qualquer página que você tiver
-
-  function fazerLogin() {
-    const usuario = document.getElementById("username").value.trim();
-    const senha = document.getElementById("password").value.trim();
-    const msg = document.getElementById("msg");
-
- 
-    if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
-      msg.style.color = "green";
-      msg.textContent = "Login bem-sucedido!";
-      setTimeout(() => {
-        window.location.href = paginaDestino;
-      }, 1000);
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "Usuário ou senha incorretos!";
-    }
-  }
-</script>
-<script>
-  // 🔧 EDITAR AQUI SE NECESSÁRIO
-  const usuarioCadastrado = "mariatoinho";
-  const senhaCadastrada = "maria2025";
-  const paginaDestino = "https://sistemescolar.github.io/mariatoinho/index.html"; // Pode ser qualquer página que você tiver
-
-  function fazerLogin() {
-    const usuario = document.getElementById("username").value.trim();
-    const senha = document.getElementById("password").value.trim();
-    const msg = document.getElementById("msg");
-
- 
-    if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
-      msg.style.color = "green";
-      msg.textContent = "Login bem-sucedido!";
-      setTimeout(() => {
-        window.location.href = paginaDestino;
-      }, 1000);
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "Usuário ou senha incorretos!";
-    }
-  }
-</script>
-<script>
-  // 🔧 EDITAR AQUI SE NECESSÁRIO
-  const usuarioCadastrado = "anafrancisca";
-  const senhaCadastrada = "ana2025";
-  const paginaDestino = "https://sistemescolar.github.io/anafrancisca/index.html"; // Pode ser qualquer página que você tiver
-
-  function fazerLogin() {
-    const usuario = document.getElementById("username").value.trim();
-    const senha = document.getElementById("password").value.trim();
-    const msg = document.getElementById("msg");
-
- 
-    if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
-      msg.style.color = "green";
-      msg.textContent = "Login bem-sucedido!";
-      setTimeout(() => {
-        window.location.href = paginaDestino;
-      }, 1000);
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "Usuário ou senha incorretos!";
-    }
-  }
-</script>
+  <div class="login-box">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Usuário">
+    <input type="password" id="password" placeholder="Senha">
+    <button onclick="fazerLogin()">Entrar</button>
+    <div class="msg" id="msg"></div>
+  </div>
 
   <script>
-    function acessarPagina(pagina) {
-      // Redireciona para a página solicitada
-      window.location.href = pagina;
-    }
+    // Lista de usuários com senhas e destinos
+    const usuarios = {
+      "benedito":     { senha: "155200", destino: "paineladmin.html" },
+      "mendes":       { senha: "luiz2025", destino: "https://sistemescolar.github.io/luizmachado/index.html" },
+      "matilde":      { senha: "matilde2025", destino: "https://sistemescolar.github.io/auziramatilde/index.html" },
+      "firmino":      { senha: "jose2025", destino: "https://sistemescolar.github.io/josefirmino/index.html" },
+      "raimundo":     { senha: "raimundo2025", destino: "https://sistemescolar.github.io/raimundomauro/index.html" },
+      "santaluzia":   { senha: "luzia2025", destino: "https://sistemescolar.github.io/santaluzia/index.html" },
+      "izidorio":     { senha: "izidorio2025", destino: "https://sistemescolar.github.io/ceiizidorio/index.html" },
+      "mariatoinho":  { senha: "maria2025", destino: "https://sistemescolar.github.io/mariatoinho/index.html" },
+      "anafrancisca": { senha: "ana2025", destino: "https://sistemescolar.github.io/anafrancisca/index.html" }
+    };
 
-    function sair() {
-      // Aqui você pode limpar o localStorage, cookies ou qualquer coisa relacionada ao login
-      alert('Saindo do sistema...');
-      // Simula logout redirecionando para uma página inicial ou de login
-      window.location.href = 'index.html';
+    function fazerLogin() {
+      const usuario = document.getElementById("username").value.trim().toLowerCase();
+      const senha = document.getElementById("password").value.trim();
+      const msg = document.getElementById("msg");
+
+      if (usuarios[usuario] && usuarios[usuario].senha === senha) {
+        msg.style.color = "green";
+        msg.textContent = "Login bem-sucedido!";
+        setTimeout(() => {
+          window.location.href = usuarios[usuario].destino;
+        }, 1000);
+      } else {
+        msg.style.color = "red";
+        msg.textContent = "Usuário ou senha incorretos!";
+      }
     }
   </script>
 
 </body>
 </html>
-
