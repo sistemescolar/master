@@ -143,6 +143,15 @@
     const senha = document.getElementById("password").value.trim();
     const msg = document.getElementById("msg");
 
+     // 🔧 EDITAR AQUI SE NECESSÁRIO
+  const usuarioCadastrado = "benedito";
+  const senhaCadastrada = "1552";
+  const paginaDestino = "https://sistemescolar.github.io/luizmachado/index.html"; // Pode ser qualquer página que você tiver
+
+  function fazerLogin() {
+    const usuario = document.getElementById("username").value.trim();
+    const senha = document.getElementById("password").value.trim();
+    const msg = document.getElementById("msg");
     if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
       msg.style.color = "green";
       msg.textContent = "Login bem-sucedido!";
